@@ -43,11 +43,15 @@ body{
     margin: 5px;
 }
 #warenkorb{
-    visibility: hidden;
+    /* visibility: hidden; */
     background-color: aqua;
     top:0;
     right: 0;
     position: fixed;
     height: 100vh;
-    width: 200px;
+    width: 300px;
+}
+.item{
+    display: inline-flex;
+    font-size: 0.8rem;
 }
