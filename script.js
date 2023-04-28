@@ -1,5 +1,6 @@
 const container = document.getElementById("container");
 const productItems = [];
+const warenkorb = [];
 
 function getProducts() {
   return fetch('https://dummyjson.com/products')
@@ -60,23 +61,31 @@ function createDOM(products){
         card.appendChild(subtractButton);
 
         container.appendChild(card);
-     
     }
 };
 
 function add(x){
     let anzahl = document.getElementById("anzahl"+x);
-    productItems[x].anzahl++;
-    anzahl.innerText=("Anzahl: ")+productItems[x].anzahl;
-    console.log(productItems[x].anzahl);
+    productItems[x-1].anzahl++;
+    anzahl.innerText=("Anzahl: ")+productItems[x-1].anzahl;
+    total();
 }
 
 function subtract(x){
     let anzahl = document.getElementById("anzahl"+x);
-    if(productItems[x].anzahl>0){
-        productItems[x].anzahl--;
-        anzahl.innerText=("Anzahl: ")+productItems[x].anzahl;
-        console.log(productItems[x].anzahl);
-    }
-    
+    if(productItems[x-1].anzahl>0){
+        productItems[x-1].anzahl--;
+        anzahl.innerText=("Anzahl: ")+productItems[x-1].anzahl;
+        total();
+    } 
+}
+
+function total(){
+    let gesamtpreis = document.getElementById("total");
+    let total= 0;
+    for(let i=0; i<productItems.length; i++){
+        total+= productItems[i].anzahl*productItems[i].price;
+    };
+    gesamtpreis.innerText=("Gesamtpreis: "+total+" €");
+
 }
