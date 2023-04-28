@@ -10,14 +10,21 @@ body{
     gap: 25px;
 }
 .card{
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     border: 1px solid;
-    height: 550px;
+    height: 500px;
     box-shadow: 0 2px 2px 0 rgb(63, 63, 63);
     border-radius: 8px;
+}
+.titleContainer{
+    height: 50px;
+}
+.descContainer{
+    height: 80px;
 }
 .image{
     object-fit: cover;
@@ -36,9 +43,11 @@ body{
     margin: 5px;
 }
 #warenkorb{
+    visibility: hidden;
+    background-color: aqua;
     top:0;
-    right: 100px;
-    position: absolute;
+    right: 0;
+    position: fixed;
     height: 100vh;
-    width: 100px;
+    width: 200px;
 }

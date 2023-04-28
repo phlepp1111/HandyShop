@@ -22,13 +22,19 @@ function createDOM(products){
         const card = document.createElement("div");
         card.setAttribute("class", "card "+(i+1));
 
-        const title = document.createElement("h2");
+        const titleContainer = document.createElement("div");
+        titleContainer.setAttribute("class", "titleContainer "+(i+1));
+
+        const title = document.createElement("h3");
         title.setAttribute("class", "title "+(i+1));
         title.innerHTML=products.products[i].title;
 
         const image = document.createElement("img");
         image.setAttribute("class", "image "+(i+1));
         image.src= products.products[i].images[0];  
+
+        const descContainer = document.createElement("div");
+        descContainer.setAttribute("class", "descContainer "+(i+1));
 
         const description = document.createElement("p");
         description.setAttribute("class", "description "+(i+1));
@@ -58,17 +64,22 @@ function createDOM(products){
         subtractButton.setAttribute("onclick", "subtract("+(i+1)+")");
         subtractButton.innerHTML = "-";
 
-        card.appendChild(title);
+        const br = document.createElement("br");
+
+        titleContainer.appendChild(title);
+        card.appendChild(titleContainer);
         card.appendChild(image);
-        card.appendChild(description);
+        descContainer.appendChild(description);
+        card.appendChild(descContainer);
         priceContainer.appendChild(price);
         priceContainer.appendChild(anzahl);
 
         buttonContainer.appendChild(addButton);
         buttonContainer.appendChild(subtractButton);
         priceContainer.appendChild(buttonContainer);
-
+        
         card.appendChild(priceContainer);
+        card.appendChild(br);
 
         container.appendChild(card);
     }
