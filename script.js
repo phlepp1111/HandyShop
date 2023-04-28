@@ -11,11 +11,11 @@ function getProducts() {
             product.anzahl = 0;
         });
         createDOM(products);
+        total();
         return products.products;
     });
 };
 getProducts();
-console.log(productItems);
 
 function createDOM(products){
     for(let i=0; i<products.products.length; i++){
@@ -34,6 +34,9 @@ function createDOM(products){
         description.setAttribute("class", "description "+(i+1));
         description.innerHTML=products.products[i].description;
 
+        const priceContainer = document.createElement("div");
+        priceContainer.setAttribute("class", "priceContainer "+(i+1));
+
         const price = document.createElement("p");
         price.setAttribute("class", "price "+(i+1));
         price.innerHTML=products.products[i].price+" €";
@@ -41,6 +44,9 @@ function createDOM(products){
         const anzahl = document.createElement("p");
         anzahl.setAttribute("id", "anzahl"+(i+1));
         anzahl.innerHTML = "Anzahl: "+productItems[i].anzahl;
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.setAttribute("class", "buttonContainer "+(i+1));
 
         const addButton = document.createElement("button");
         addButton.setAttribute("id", "addButton "+(i+1));
@@ -55,10 +61,14 @@ function createDOM(products){
         card.appendChild(title);
         card.appendChild(image);
         card.appendChild(description);
-        card.appendChild(price);
-        card.appendChild(anzahl);
-        card.appendChild(addButton);
-        card.appendChild(subtractButton);
+        priceContainer.appendChild(price);
+        priceContainer.appendChild(anzahl);
+
+        buttonContainer.appendChild(addButton);
+        buttonContainer.appendChild(subtractButton);
+        priceContainer.appendChild(buttonContainer);
+
+        card.appendChild(priceContainer);
 
         container.appendChild(card);
     }
