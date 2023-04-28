@@ -1,12 +1,20 @@
 const container = document.getElementById("container");
+const productItems = [];
 
-function getProducts(){
-    fetch('https://dummyjson.com/products')
-        .then(res => res.json())
-        .then((products)=>{
-            createDOM(products);
-        });
-}
+function getProducts() {
+  return fetch('https://dummyjson.com/products')
+    .then(res => res.json())
+    .then((products) => {
+      createDOM(products);
+      return products.products;
+    });
+};
+
+getProducts().then((products) => {
+  productItems.push(...products);
+  console.log(productItems);
+});
+
 function createDOM(products){
     for(let i=0; i<products.products.length; i++){
         console.log(products.products[i]);
@@ -47,4 +55,4 @@ function createDOM(products){
     }
 };
 
-getProducts();
+// getProducts();
