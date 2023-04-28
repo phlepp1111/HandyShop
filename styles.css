@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+}
+.container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 25px;
+}
+.card{
+    border: 1px solid;
+}
+.image{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
