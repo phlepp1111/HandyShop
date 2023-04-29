@@ -1,8 +1,8 @@
 const container = document.getElementById("container");
 const warenkorbContainer = document.getElementById("warenkorbSub");
+const warenkorb = document.getElementById("warenkorb");
 const productItems = [];
-const warenkorb = [];
-
+let warenkorbToggle = 0;
 function getProducts() {
   return fetch('https://dummyjson.com/products')
     .then(res => res.json())
@@ -11,61 +11,62 @@ function getProducts() {
         productItems.forEach((product) => {
             product.anzahl = 0;
         });
-        createDOM(products);
+        createDOM();
         total();
         return products.products;
     });
 };
 getProducts();
 
-function createDOM(products){
-    for(let i=0; i<products.products.length; i++){
-        const card = document.createElement("div");
+function createDOM(){
+    container.innerHTML="";
+    productItems.map((_, i)=>{
+        let card = document.createElement("div");
         card.setAttribute("class", "card "+(i+1));
 
-        const titleContainer = document.createElement("div");
+        let titleContainer = document.createElement("div");
         titleContainer.setAttribute("class", "titleContainer "+(i+1));
 
-        const title = document.createElement("h3");
+        let title = document.createElement("h3");
         title.setAttribute("class", "title "+(i+1));
-        title.innerHTML=products.products[i].title;
+        title.innerHTML=productItems[i].title;
 
-        const image = document.createElement("img");
+        let image = document.createElement("img");
         image.setAttribute("class", "image "+(i+1));
-        image.src= products.products[i].images[0];  
+        image.src= productItems[i].images[0];  
 
-        const descContainer = document.createElement("div");
+        let descContainer = document.createElement("div");
         descContainer.setAttribute("class", "descContainer "+(i+1));
 
-        const description = document.createElement("p");
+        let description = document.createElement("p");
         description.setAttribute("class", "description "+(i+1));
-        description.innerHTML=products.products[i].description;
+        description.innerHTML=productItems[i].description;
 
-        const priceContainer = document.createElement("div");
+        let priceContainer = document.createElement("div");
         priceContainer.setAttribute("class", "priceContainer "+(i+1));
 
-        const price = document.createElement("p");
+        let price = document.createElement("p");
         price.setAttribute("class", "price "+(i+1));
-        price.innerHTML=products.products[i].price+" €";
+        price.innerHTML=productItems[i].price+" €";
 
-        const anzahl = document.createElement("p");
+        let anzahl = document.createElement("p");
         anzahl.setAttribute("id", "anzahl"+(i+1));
         anzahl.innerHTML = "Anzahl: "+productItems[i].anzahl;
 
-        const buttonContainer = document.createElement("div");
+        let buttonContainer = document.createElement("div");
         buttonContainer.setAttribute("class", "buttonContainer "+(i+1));
 
-        const addButton = document.createElement("button");
+        let addButton = document.createElement("button");
         addButton.setAttribute("id", "addButton "+(i+1));
         addButton.setAttribute("onclick", "add("+(i+1)+")");
         addButton.innerHTML = "+";
 
-        const subtractButton = document.createElement("button");
+        let subtractButton = document.createElement("button");
         subtractButton.setAttribute("id", "subtractButton "+(i+1));
         subtractButton.setAttribute("onclick", "subtract("+(i+1)+")");
         subtractButton.innerHTML = "-";
 
-        const br = document.createElement("br");
+        let br = document.createElement("br");
 
         titleContainer.appendChild(title);
         card.appendChild(titleContainer);
@@ -83,32 +84,43 @@ function createDOM(products){
         card.appendChild(br);
 
         container.appendChild(card);
-    }
+    });
 };
 function warenkorbUpdate(){
     warenkorbContainer.innerHTML = '';
-    console.log(productItems);
     productItems
         .filter(item => item.anzahl > 0)
         .map((_, i) => {
         
-                const item = document.createElement("div");
+                let item = document.createElement("div");
                 item.setAttribute("class", "item");
 
-                const title = document.createElement("p");
+                let title = document.createElement("p");
                 title.setAttribute("class", "title "+(i+1));
                 title.innerHTML=_.title;
 
-                const price = document.createElement("p");
+                let price = document.createElement("p");
                 price.setAttribute("class", "price "+(i+1));
                 price.innerHTML=_.price+" €";
 
-                const anzahl = document.createElement("p");
+                let addButton = document.createElement("button");
+                addButton.setAttribute("id", "addButton "+(i+1));
+                addButton.setAttribute("onclick", "add("+(_.id)+")");
+                addButton.innerHTML = "+";
+
+                let subtractButton = document.createElement("button");
+                subtractButton.setAttribute("id", "subtractButton "+(i+1));
+                subtractButton.setAttribute("onclick", "subtract("+(_.id)+")");
+                subtractButton.innerHTML = "-";
+
+                let anzahl = document.createElement("p");
                 anzahl.setAttribute("id", "anzahl"+(i+1));
                 anzahl.innerHTML = "Anzahl: "+_.anzahl;
-
+ 
                 item.appendChild(title);
                 item.appendChild(price);
+                item.appendChild(addButton);
+                item.appendChild(subtractButton);
                 item.appendChild(anzahl);
                 warenkorbContainer.appendChild(item);
 
@@ -141,3 +153,23 @@ function total(){
     gesamtpreis.innerText=("Gesamtpreis: "+total+" €");
 
 };
+
+function toggleWarenkorb(){
+    if (warenkorbToggle == 0){
+        warenkorb.style.visibility="visible";
+        warenkorbToggle = 1;
+    } else{
+        warenkorb.style.visibility="hidden";
+        warenkorbToggle = 0;
+    }
+}
+
+function bezahlen(){
+    warenkorbContainer.innerHTML = '';
+    toggleWarenkorb();
+    productItems.forEach((product) => {
+        product.anzahl = 0;
+    });
+    createDOM();
+    alert('alles bezahlt.')
+}

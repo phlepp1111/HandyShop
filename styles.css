@@ -43,7 +43,7 @@ body{
     margin: 10px;
 }
 #warenkorb{
-    /* visibility: hidden; */
+    visibility:hidden;
     background-color: aqua;
     top:0;
     right: 0;
@@ -53,5 +53,7 @@ body{
 }
 .item{
     display: flex;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    width: 50%;
+    justify-content: space-around;
 }

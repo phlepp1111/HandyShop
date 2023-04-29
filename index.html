@@ -11,11 +11,14 @@
     <div>
         <h1>Bobs Webshop</h1>
     </div>
+    <button id="warenkorbBtn" onclick="toggleWarenkorb()">Warenkorb</button>
     <div id="container" class="container">
     </div>
     <div id="warenkorb">
+        <button id="close" onclick="toggleWarenkorb()">X</button>
         <h2 id="total"></h2>
         <div id="warenkorbSub"></div>
+        <button id="bezahlenBtn" onclick="bezahlen()">bezahlen</button>
     </div>
     <script src="script.js"></script>
 </body>
