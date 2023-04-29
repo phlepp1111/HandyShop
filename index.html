@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Bobs Webshop</title>
-</head>
-<body>
-    <div>
-        <h1>Bobs Webshop</h1>
-    </div>
-    <button id="warenkorbBtn" onclick="toggleWarenkorb()">Warenkorb</button>
-    <div id="container" class="container">
-    </div>
-    <div id="warenkorb">
-        <button id="close" onclick="toggleWarenkorb()">X</button>
-        <h2 id="total"></h2>
-        <div id="warenkorbSub"></div>
-        <button id="bezahlenBtn" onclick="bezahlen()">bezahlen</button>
-    </div>
-    <script src="script.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <title>Bobs Webshop</title>
+    </head>
+    <body>
+        <div>
+            <h1>Bobs Webshop</h1>
+        </div>
+        <button id="warenkorbBtn" onclick="toggleWarenkorb()">Warenkorb</button>
+        <div id="container" class="container"></div>
+        <div class="warenkorbWrap">
+            <div id="warenkorb">
+                <button id="close" onclick="toggleWarenkorb()">X</button>
+                <h2 id="total"></h2>
+                <div id="warenkorbSub"></div>
+                <button id="bezahlenBtn" onclick="bezahlen()">bezahlen</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
 </html>
