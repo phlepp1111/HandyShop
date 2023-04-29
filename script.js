@@ -1,5 +1,5 @@
 const container = document.getElementById("container");
-const warenkorbContainer = document.getElementById("warenkorb");
+const warenkorbContainer = document.getElementById("warenkorbSub");
 const productItems = [];
 const warenkorb = [];
 
@@ -86,36 +86,33 @@ function createDOM(products){
     }
 };
 function warenkorbUpdate(){
-    const clear = warenkorbContainer.getElementsByClassName("item");
-    for (var i = 0; i < clear.length; i++){
-        warenkorbContainer.removeChild(clear[i]);
-    };
-    
-    for(let i=0; i<productItems.length; i++){
+    warenkorbContainer.innerHTML = '';
+    console.log(productItems);
+    productItems
+        .filter(item => item.anzahl > 0)
+        .map((_, i) => {
         
-        if (productItems[i].anzahl>0){
-            const item = document.createElement("div");
-            item.setAttribute("class", "item");
+                const item = document.createElement("div");
+                item.setAttribute("class", "item");
 
-            const title = document.createElement("p");
-            title.setAttribute("class", "title "+(i+1));
-            title.innerHTML=productItems[i].title;
+                const title = document.createElement("p");
+                title.setAttribute("class", "title "+(i+1));
+                title.innerHTML=_.title;
 
-            const price = document.createElement("p");
-            price.setAttribute("class", "price "+(i+1));
-            price.innerHTML=productItems[i].price+" €";
+                const price = document.createElement("p");
+                price.setAttribute("class", "price "+(i+1));
+                price.innerHTML=_.price+" €";
 
-            const anzahl = document.createElement("p");
-            anzahl.setAttribute("id", "anzahl"+(i+1));
-            anzahl.innerHTML = "Anzahl: "+productItems[i].anzahl;
+                const anzahl = document.createElement("p");
+                anzahl.setAttribute("id", "anzahl"+(i+1));
+                anzahl.innerHTML = "Anzahl: "+_.anzahl;
 
-            item.appendChild(title);
-            item.appendChild(price);
-            item.appendChild(anzahl);
-            warenkorbContainer.appendChild(item);
+                item.appendChild(title);
+                item.appendChild(price);
+                item.appendChild(anzahl);
+                warenkorbContainer.appendChild(item);
 
-        }
-    };
+    });
 };
 function add(x){
     let anzahl = document.getElementById("anzahl"+x);

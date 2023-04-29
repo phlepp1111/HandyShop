@@ -39,8 +39,8 @@ body{
     justify-content: space-around;
 }
 .buttonContainer>*{
-    padding: 5px;
-    margin: 5px;
+    padding: 10px;
+    margin: 10px;
 }
 #warenkorb{
     /* visibility: hidden; */
@@ -49,9 +49,9 @@ body{
     right: 0;
     position: fixed;
     height: 100vh;
-    width: 300px;
+    width: 50vw;
 }
 .item{
-    display: inline-flex;
+    display: flex;
     font-size: 0.8rem;
 }
