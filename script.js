@@ -97,13 +97,22 @@ function warenkorbUpdate() {
             let item = document.createElement("div");
             item.setAttribute("class", "item");
 
+            let titleContainer = document.createElement("div");
+            titleContainer.setAttribute("class", "titleContainer");
+
             let title = document.createElement("p");
             title.setAttribute("class", "title " + (i + 1));
             title.innerHTML = _.title;
 
+            let priceContainer = document.createElement("div");
+            priceContainer.setAttribute("class", "priceContainer");
+
             let price = document.createElement("p");
             price.setAttribute("class", "price " + (i + 1));
             price.innerHTML = _.price + " €";
+
+            let buttonContainer = document.createElement("div");
+            buttonContainer.setAttribute("class", "buttonContainerWarenkorb");
 
             let addButton = document.createElement("button");
             addButton.setAttribute("id", "addButton " + (i + 1));
@@ -115,15 +124,23 @@ function warenkorbUpdate() {
             subtractButton.setAttribute("onclick", "subtract(" + _.id + ")");
             subtractButton.innerHTML = "-";
 
+            let anzahlContainer = document.createElement("div");
+            anzahlContainer.setAttribute("class", "anzahlContainer");
+
             let anzahl = document.createElement("p");
             anzahl.setAttribute("id", "anzahl" + (i + 1));
             anzahl.innerHTML = "Anzahl: " + _.anzahl;
 
-            item.appendChild(title);
-            item.appendChild(price);
-            item.appendChild(addButton);
-            item.appendChild(subtractButton);
-            item.appendChild(anzahl);
+            titleContainer.appendChild(title);
+            item.appendChild(titleContainer);
+            priceContainer.appendChild(price);
+            item.appendChild(priceContainer);
+
+            buttonContainer.appendChild(addButton);
+            buttonContainer.appendChild(subtractButton);
+            item.appendChild(buttonContainer);
+            anzahlContainer.appendChild(anzahl);
+            item.appendChild(anzahlContainer);
             warenkorbContainer.appendChild(item);
         });
 }
