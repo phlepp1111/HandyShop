@@ -44,9 +44,10 @@ body {
     flex-direction: row;
     justify-content: space-around;
 }
-.buttonContainer > * {
+button {
     padding: 10px;
     margin: 10px;
+    border-radius: 10%;
 }
 .detailbWrap {
     padding: 0;
@@ -90,6 +91,7 @@ body {
     position: fixed;
     height: 100vh;
     width: 100vw;
+    overflow: auto;
 }
 .item {
     display: flex;
@@ -97,7 +99,52 @@ body {
     width: 50%;
     justify-content: space-around;
 }
+#close {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+}
+.fade-in {
+    -webkit-animation: fade-in ease-in 3s;
+    animation: fade-in ease-in 3s;
+}
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
+.fade-out {
+    -webkit-animation: fade-out 3s ease-out;
+    animation: fade-out 3s ease-out;
+}
+@-webkit-keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
 @media screen and (max-width: 1200px) {
     .container {
         display: grid;

@@ -157,50 +157,67 @@ function total() {
 
 function toggleWarenkorb() {
     if (warenkorbToggle == 0) {
-        warenkorb.style.visibility = "visible";
-        document.body.style.position = "fixed";
-        warenkorbToggle = 1;
+        detail.classList.add("fade-in");
+        setTimeout(() => {
+            warenkorb.style.visibility = "visible";
+            document.body.style.overflow = "hidden";
+            warenkorbToggle = 1;
+        }, 300);
     } else {
-        warenkorb.style.visibility = "hidden";
-        document.body.style.position = "";
-        warenkorbToggle = 0;
-        detail.style.visibility = "hidden";
-        document.body.style.position = "";
-        detailToggle = 0;
+        detail.classList.add("fade-out");
+        setTimeout(() => {
+            warenkorb.style.visibility = "hidden";
+            document.body.style.position = "";
+            warenkorbToggle = 0;
+            detail.style.visibility = "hidden";
+            document.body.style.position = "";
+            detailToggle = 0;
+            document.body.style.overflow = "auto";
+        }, 300);
     }
 }
 
 function toggleDetail(x) {
     detail.innerHTML = "";
     if (detailToggle == 0) {
-        detail.style.visibility = "visible";
-        document.body.style.position = "fixed";
-        detailToggle = 1;
+        setTimeout(() => {
+            detail.classList.add("fade-in");
+            document.body.style.overflow = "hidden";
 
-        let title = document.createElement("h3");
-        title.setAttribute("class", "title " + x);
-        title.innerHTML = productItems[x - 1].title;
+            detail.style.visibility = "visible";
+            detailToggle = 1;
 
-        let image = document.createElement("img");
-        image.setAttribute("class", "imageDetail " + x);
-        image.setAttribute("onclick", "toggleDetail(" + x + ")");
-        image.src = productItems[x - 1].images[0];
+            let title = document.createElement("h3");
+            title.setAttribute("class", "title " + x);
+            title.innerHTML = productItems[x - 1].title;
 
-        let descContainer = document.createElement("div");
-        descContainer.setAttribute("class", "descContainer " + x);
+            let image = document.createElement("img");
+            image.setAttribute("class", "imageDetail " + x);
+            image.setAttribute("onclick", "toggleDetail(" + x + ")");
+            image.src = productItems[x - 1].images[0];
 
-        let description = document.createElement("p");
-        description.setAttribute("class", "description " + x);
-        description.innerHTML = productItems[x - 1].description;
-        descContainer.appendChild(description);
+            let descContainer = document.createElement("div");
+            descContainer.setAttribute("class", "descContainer " + x);
 
-        detail.appendChild(title);
-        detail.appendChild(image);
-        detail.appendChild(descContainer);
+            let description = document.createElement("p");
+            description.setAttribute("class", "description " + x);
+            description.innerHTML = productItems[x - 1].description;
+            descContainer.appendChild(description);
+
+            detail.appendChild(title);
+            detail.appendChild(image);
+            detail.appendChild(descContainer);
+            detail.classList.remove("fade-in");
+        }, 300);
     } else {
-        detail.style.visibility = "hidden";
-        document.body.style.position = "";
-        detailToggle = 0;
+        detail.classList.add("fade-out");
+        setTimeout(() => {
+            detail.style.visibility = "hidden";
+            document.body.style.position = "";
+            document.body.style.overflow = "auto";
+            detailToggle = 0;
+            detail.classList.remove("fade-out");
+        }, 300);
     }
 }
 function bezahlen() {
