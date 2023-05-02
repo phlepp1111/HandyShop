@@ -51,11 +51,11 @@ function createDOM() {
 
         let price = document.createElement("p");
         price.setAttribute("class", "price " + (i + 1));
-        price.innerHTML = productItems[i].price + " €";
+        price.innerHTML = "<b>" + productItems[i].price + " €";
 
         let anzahl = document.createElement("p");
         anzahl.setAttribute("id", "anzahl" + (i + 1));
-        anzahl.innerHTML = "Anzahl: " + productItems[i].anzahl;
+        anzahl.innerHTML = "Anzahl: <b>" + productItems[i].anzahl;
 
         let buttonContainer = document.createElement("div");
         buttonContainer.setAttribute("class", "buttonContainer " + (i + 1));

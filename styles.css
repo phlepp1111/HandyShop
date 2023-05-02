@@ -10,6 +10,14 @@ body {
     );
     font-family: Arial, Helvetica, sans-serif;
 }
+h1 {
+    background-color: #75e8ff8d;
+    width: fit-content;
+    margin: 10px auto;
+    padding: 10px;
+    box-shadow: 0 2px 2px 0 rgb(63, 63, 63);
+    border-radius: 8px;
+}
 .container {
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -50,7 +58,9 @@ button {
     padding: 10px;
     margin: 10px;
     border-radius: 7px;
+    box-shadow: 0 2px 2px 0 rgb(63, 63, 63);
     cursor: pointer;
+    background-color: #9deefead;
 }
 .detailbWrap {
     padding: 0;
@@ -84,7 +94,7 @@ button {
     height: auto;
     box-shadow: 0 2px 2px 0 rgb(0, 0, 0);
     border-radius: 8px;
-    background-color: rgb(255, 255, 255);
+    background-color: #9deefead;
     /* mix-blend-mode: lighten; */
 }
 .warenkorbWrap {
