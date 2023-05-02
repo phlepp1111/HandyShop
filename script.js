@@ -1,8 +1,11 @@
 const container = document.getElementById("container");
 const warenkorbContainer = document.getElementById("warenkorbSub");
 const warenkorb = document.getElementById("warenkorb");
+const detail = document.getElementById("detail");
+
 const productItems = [];
 let warenkorbToggle = 0;
+let detailToggle = 0;
 
 function getProducts() {
     return fetch("https://dummyjson.com/products")
@@ -33,6 +36,7 @@ function createDOM() {
 
         let image = document.createElement("img");
         image.setAttribute("class", "image " + (i + 1));
+        image.setAttribute("onclick", "toggleDetail(" + (i + 1) + ")");
         image.src = productItems[i].images[0];
 
         let descContainer = document.createElement("div");
@@ -154,13 +158,51 @@ function total() {
 function toggleWarenkorb() {
     if (warenkorbToggle == 0) {
         warenkorb.style.visibility = "visible";
+        document.body.style.position = "fixed";
         warenkorbToggle = 1;
     } else {
         warenkorb.style.visibility = "hidden";
+        document.body.style.position = "";
         warenkorbToggle = 0;
+        detail.style.visibility = "hidden";
+        document.body.style.position = "";
+        detailToggle = 0;
     }
 }
 
+function toggleDetail(x) {
+    detail.innerHTML = "";
+    if (detailToggle == 0) {
+        detail.style.visibility = "visible";
+        document.body.style.position = "fixed";
+        detailToggle = 1;
+
+        let title = document.createElement("h3");
+        title.setAttribute("class", "title " + x);
+        title.innerHTML = productItems[x - 1].title;
+
+        let image = document.createElement("img");
+        image.setAttribute("class", "imageDetail " + x);
+        image.setAttribute("onclick", "toggleDetail(" + x + ")");
+        image.src = productItems[x - 1].images[0];
+
+        let descContainer = document.createElement("div");
+        descContainer.setAttribute("class", "descContainer " + x);
+
+        let description = document.createElement("p");
+        description.setAttribute("class", "description " + x);
+        description.innerHTML = productItems[x - 1].description;
+        descContainer.appendChild(description);
+
+        detail.appendChild(title);
+        detail.appendChild(image);
+        detail.appendChild(descContainer);
+    } else {
+        detail.style.visibility = "hidden";
+        document.body.style.position = "";
+        detailToggle = 0;
+    }
+}
 function bezahlen() {
     warenkorbContainer.innerHTML = "";
     toggleWarenkorb();
@@ -169,5 +211,5 @@ function bezahlen() {
     });
     total();
     createDOM();
-    alert("alles bezahlt.");
+    alert("✅alles bezahlt!✅");
 }

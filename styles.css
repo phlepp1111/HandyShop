@@ -48,6 +48,27 @@ body {
     padding: 10px;
     margin: 10px;
 }
+.detailbWrap {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+}
+#detail {
+    color: whitesmoke;
+    top: 0;
+    left: 0;
+    position: fixed;
+    visibility: hidden;
+    background-color: #000000e1;
+    height: 100vh;
+    width: 100vw;
+}
+.imageDetail {
+    max-width: 50vw;
+    max-height: 50vh;
+    box-shadow: 0 2px 2px 0 rgb(63, 63, 63);
+    border-radius: 8px;
+}
 #warenkorbBtn {
     position: fixed;
     top: 15px;
@@ -61,9 +82,11 @@ body {
     justify-content: center;
 }
 #warenkorb {
-    background-color: #ffffffd0;
+    color: whitesmoke;
+    background-color: #000000e1;
     visibility: hidden;
     top: 0;
+    left: 0;
     position: fixed;
     height: 100vh;
     width: 100vw;
