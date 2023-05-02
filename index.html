@@ -11,16 +11,20 @@
         <div>
             <h1>Bobs Shop</h1>
         </div>
-        <button id="warenkorbBtn" onclick="toggleWarenkorb()">Warenkorb</button>
+        <img
+            id="warenkorbBtn"
+            onclick="toggleWarenkorb()"
+            src="Free Shopping Cart Icon.png"
+        />
         <div class="detailWrap">
             <div id="detail"></div>
         </div>
         <div id="container" class="container"></div>
 
         <div class="warenkorbWrap">
-            <div id="warenkorb">
+            <div id="warenkorb" onclick="toggleWarenkorb()">
                 <button id="close" onclick="toggleWarenkorb()">X</button>
-                <h2>Warenkorb</h2>
+                <h2>🛒Warenkorb</h2>
                 <h2 id="total"></h2>
                 <div id="warenkorbSub"></div>
                 <button id="bezahlenBtn" onclick="bezahlen()">bezahlen</button>
