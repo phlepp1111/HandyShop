@@ -62,6 +62,9 @@ button {
     cursor: pointer;
     background-color: #9deefead;
 }
+button:hover {
+    box-shadow: 0 3px 3px 0 rgb(0, 0, 0);
+}
 .detailbWrap {
     padding: 0;
     margin: 0;
@@ -96,6 +99,9 @@ button {
     border-radius: 8px;
     background-color: #9deefead;
     /* mix-blend-mode: lighten; */
+}
+#warenkorbBtn:hover {
+    box-shadow: 0 3px 3px 0 rgb(0, 0, 0);
 }
 .warenkorbWrap {
     padding: 0;

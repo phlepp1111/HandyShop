@@ -148,7 +148,7 @@ function warenkorbUpdate() {
 function add(x) {
     let anzahl = document.getElementById("anzahl" + x);
     productItems[x - 1].anzahl++;
-    anzahl.innerText = "Anzahl: " + productItems[x - 1].anzahl;
+    anzahl.innerHTML = "Anzahl: <b>" + productItems[x - 1].anzahl;
     total();
     warenkorbUpdate();
 }
@@ -157,7 +157,7 @@ function subtract(x) {
     let anzahl = document.getElementById("anzahl" + x);
     if (productItems[x - 1].anzahl > 0) {
         productItems[x - 1].anzahl--;
-        anzahl.innerText = "Anzahl: " + productItems[x - 1].anzahl;
+        anzahl.innerHTML = "Anzahl: <b>" + productItems[x - 1].anzahl;
         total();
         warenkorbUpdate();
     }
@@ -169,7 +169,7 @@ function total() {
     for (let i = 0; i < productItems.length; i++) {
         total += productItems[i].anzahl * productItems[i].price;
     }
-    gesamtpreis.innerText = "Gesamtpreis: " + total + " €";
+    gesamtpreis.innerHTML = "Gesamtpreis: " + total + " €";
 }
 
 function toggleWarenkorb() {
